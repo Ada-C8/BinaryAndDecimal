@@ -25,6 +25,11 @@ binary_to_decimal
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 
+#####################
+#Algorithm:
+#1) Compare the length of the two arrays. If they are not the same, stop and return false. If they are the same, continue.
+#2) Compare the first values of both collections. If they are not the same, stop and return false. If they are the same, repeat with the remaining values, comparing each at the same location. If you get through all the values and they are all the same, continue.
+#3) Stop and return true.
 
 
 
