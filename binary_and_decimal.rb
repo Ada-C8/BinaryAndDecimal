@@ -7,12 +7,16 @@ def binary_to_decimal
   8.times do
     array.push(rand(2))
   end
+  binary_number = array.join.to_s
+  puts "Binary Number: #{binary_number}"
   sum = 0
   i = 7
   array.each do |value|
     sum += value * (2 ** i)
     i -= 1
   end
+  decimal_number = sum
+  puts "Decimal Number: #{decimal_number}"
 end
 
 binary_to_decimal
