@@ -3,8 +3,27 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary_number = []
+  8.times do
+    binary_number << rand(0..1)
+  end #.times
+  puts "This is the binary number: #{binary_number.join('')}"
+
+  reverse_binary = binary_number.reverse
+  puts "The reverse binary number is #{reverse_binary.join('')}"
+
+  i = 0
+  numbers_to_add = []
+  reverse_binary.each do |number|
+    numbers_to_add << number * (2 ** i)
+    i += 1
+  end #.each
+
+  decimal_number = numbers_to_add.inject(0){|sum, num| sum + num}
+
+  puts "The decimal number is #{decimal_number}"
 end
+
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
 #    parameters. The method return `true` if the arrays contain the same elements
@@ -14,8 +33,22 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+  if array1.length != array2.length
+    return false
+  elsif array1.length == array2.length
+    i = 0
+    same = 0
+    array1.each do |num|
+      if num != array2[i]
+        same = false
+        return same
+      elsif num == array2[i]
+        same = true
+      end #if/else
+      i += 1
+    end #.each
+    return same
+  end #if/else
 end
 
 # --- END OF METHODS ---
