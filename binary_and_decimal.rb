@@ -53,8 +53,8 @@ def array_equals(array1, array2)
       end
     end
   end
-  
-  if i = array1.length && i = array2.length
+
+  if i == array1.length && i == array2.length
     return true
   end
 end
