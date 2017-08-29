@@ -3,7 +3,14 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  arr = []
+  value = 0
+  (0..7).each do |index|
+    arr.push([0,1].sample)
+    value += arr[index] * (2**(7-index))
+  end
+  print arr
+  puts "\n#{value}"
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -14,7 +21,10 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+  return false if array1.length != array2.length
+  array1.length.times do |index|
+    return false if array1[index] != array2[index]
+  end
   return true
 end
 
