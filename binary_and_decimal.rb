@@ -10,7 +10,6 @@ def binary_to_decimal
   puts "This is the binary number: #{binary_number.join('')}"
 
   reverse_binary = binary_number.reverse
-  puts "The reverse binary number is #{reverse_binary.join('')}"
 
   i = 0
   numbers_to_add = []
