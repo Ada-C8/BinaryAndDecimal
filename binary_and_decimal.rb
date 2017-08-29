@@ -1,22 +1,44 @@
 # 1. Write a method named `binary_to_decimal` that creates an array of size 8.
-#    Fill the array randomly with 0’s and 1’s. Print out the array so that it
-#    appears as a binary number. Calculate the decimal value for this binary
-#    number using the algorithm you devised in class. Print out the decimal value.
+require 'pry'
 def binary_to_decimal
-  puts "Not implemented"
+  binary = []
+  8.times do
+    binary << rand(0..1)
+  end
+
+  exponential_power = 0
+  to_add = []
+  binary.reverse!
+  binary.each do |number|
+    to_add << (number * (2 ** exponential_power))
+    exponential_power += 1
+  end
+
+  puts to_add.sum
 end
 
-# 2. Write a method named `array_equals` that accepts two integer arrays as
-#    parameters. The method return `true` if the arrays contain the same elements
-#    in the same order, and returns `false` otherwise.
-# Note: Do not use Array class methods for comparing the whole array at once.
-#       You may use array indexing to retrieve one element at a time,
-#       compare individual elements with each other and
-#       you may retrieve the length of an array.
-def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+
+# # 2. Write a method named `array_equals` that accepts two integer arrays as parameters.
+def array_equals(array_one, array_two)
+  if array_one.length != array_two.length
+    return false
+  end
+
+  index = 0
+  matching_integers = 0
+  array_one.each do |integer|
+    if integer == array_two[index]
+      matching_integers += 1
+      index += 1
+    end
+  end
+  if matching_integers == array_one.length
+    return true
+  else
+    return false
+  end
 end
+
 
 # --- END OF METHODS ---
 puts "Calling binary_to_decimal"
