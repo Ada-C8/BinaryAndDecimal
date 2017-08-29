@@ -3,7 +3,19 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  # create byte with 8 random 0s and 1s
+  byte = Array.new(8) { rand(0..1) }
+  byte_index = 7
+  exponent = 0
+  sum = 0
+  # calculate decimal value
+  8.times do
+    sum += ((byte[byte_index]) * (2**exponent))
+    byte_index -= 1
+    exponent += 1
+  end
+  # print summary of conversion from binary to decimal
+  puts "The following byte #{byte} is equivalent to #{sum} in decimal."
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -13,9 +25,21 @@ end
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
+
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+  #if arrays are the same length check each element
+  if array1.length == array2.length
+    array1.each_with_index do |array1_element, i|
+      # if the array differs at an index return false
+      if array1_element != array2[i]
+        return false
+      end
+    end
+    # if all array items looped through without returning false, they are the same.
+    return true
+  else # arrays are not the same length
+    return false
+  end
 end
 
 # --- END OF METHODS ---
