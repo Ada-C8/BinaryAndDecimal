@@ -3,7 +3,33 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  # populates an array with 8 random elements of either 0's or 1's
+  binary_array = []
+  8.times do
+    binary_array << Random.rand(2)
+  end
+
+  # creates a string representation of the binary number
+  binary_string = ""
+  binary_array.each do |num|
+    binary_string += "#{num}"
+  end
+  print "the binary number is " + binary_string
+
+  # decimal_sum will be equivalent to final decimal value for the binary number
+  # starting at the last element of the array (index[-1]),
+  # if the value is equal to 1, then 2^e (starting at 0) is added to the decimal_sum
+  decimal_sum = 0
+  e = 0
+  i = -1
+  binary_array.length.times do
+    if binary_array[i] == 1
+      decimal_sum += 2**e
+    end
+    i -= 1
+    e += 1
+  end
+  print "\nthe decimal value is " + decimal_sum.to_s + "\n"
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -14,9 +40,23 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+  #if the arrays are different lengths, will return false
+  if array1.length != array2.length
+    return false
+  end
+
+  # compares each element of array, starting at index[0]
+  # if they are not equivalent at any point, then it will return false
+  # else it will return true when completed 
+  x = 0
+  array1.length.times do
+    if array1[x] != array2[x]
+      return false
+    end
+    x += 1
+  end
   return true
-end
+end # => end of array_equals
 
 # --- END OF METHODS ---
 puts "Calling binary_to_decimal"
