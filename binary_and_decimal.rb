@@ -1,9 +1,26 @@
+
 # 1. Write a method named `binary_to_decimal` that creates an array of size 8.
 #    Fill the array randomly with 0’s and 1’s. Print out the array so that it
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary_array = []
+  8.times do
+    binary_array << rand(2)
+  end
+  nums_to_sum = []
+  power = 7
+  binary_array.each do |digit|
+    product = digit * (2 ** power)
+    nums_to_sum << product
+    power -= 1
+  end
+  decimal = 0
+  8.times do |i|
+    decimal += nums_to_sum[i]
+  end
+  puts "Binary number: #{binary_array.join}"
+  puts "Decimal number: #{decimal}"
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -14,7 +31,14 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+  if array1.length != array2.length
+    return false
+  end
+  array1.length.times do |i|
+    if array1[i] != array2[i]
+      return false
+    end
+  end
   return true
 end
 
