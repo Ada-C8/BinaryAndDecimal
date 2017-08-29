@@ -3,8 +3,23 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  array = []
+  8.times do
+    array.push(rand(2))
+  end
+  binary_number = array.join.to_s
+  puts "Binary Number: #{binary_number}"
+  sum = 0
+  i = 7
+  array.each do |value|
+    sum += value * (2 ** i)
+    i -= 1
+  end
+  decimal_number = sum
+  puts "Decimal Number: #{decimal_number}"
 end
+
+binary_to_decimal
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
 #    parameters. The method return `true` if the arrays contain the same elements
@@ -13,15 +28,44 @@ end
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
+
+#####################
+#Algorithm:
+#1) Compare the length of the two arrays. If they are not the same, stop and return false. If they are the same, continue.
+#2) Compare the first values of both collections. If they are not the same, stop and return false. If they are the same, repeat with the remaining values, comparing each at the same location. If you get through all the values and they are all the same, continue.
+#3) Stop and return true.
+
+
+
+
+
+
+
 def array_equals(array1, array2)
+  i = 0
+  if array1.length != array2.length
+    return false
+  else
+    array1.length.times do
+      if array1[i] != array2[i]
+        return false
+      end
+      i += 1
+    end
+  end
   puts "Not implemented"
   return true
 end
 
-# --- END OF METHODS ---
+# p array_equals([10, 20, 33], [10, 20, 30])
+
+
+
+#
+# # --- END OF METHODS ---
 puts "Calling binary_to_decimal"
 binary_to_decimal
-
+#
 puts "Calling array_equals"
 array1 = [10, 20, 30, 40, 50, 60]
 array2 = [10, 20, 30, 40, 50, 60]
@@ -30,7 +74,7 @@ if !array_equals(array1, array2) # both equal case
   print array1
   print array2
 end
-
+#
 array3 = [10, 20, 30, 40, 50, 60, 70] # not equal: first 6 elements same
 if array_equals(array1, array3)
   puts "BUG: array_equals should return false."
