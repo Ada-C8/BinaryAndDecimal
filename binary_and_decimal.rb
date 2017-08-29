@@ -3,7 +3,21 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary_number = []
+  8.times do
+    random_no = rand(0..1)
+    binary_number << random_no
+  end
+  decimal_number = []
+  i = binary_number.length
+  binary_number.each do |value|
+    i -= 1
+    number = value * (2 ** i)
+    decimal_number << number
+  end
+  # add all decimal number Array elements together
+  decimal_number = decimal_number.inject(0){|sum,x| sum + x }
+  return decimal_number
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -13,9 +27,20 @@ end
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
-def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+def array_equals(first, second)
+  total = 0
+  if first.length == second.length
+    first.each_with_index do |integer, i|
+      if integer == second[i]
+        total += 1
+      end
+    end
+    if total == first.length
+      return true
+    end
+  else
+    return false
+  end
 end
 
 # --- END OF METHODS ---
