@@ -41,18 +41,22 @@ end
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
   i = 0
-  match = false
-  if int_set1.length == int_set2.length
-    int_set1.each do |value|
-      if value == int_set2[i]
-        match = true
+
+  if array1.length != array2.length
+    return false
+  else
+    array1.each do |value|
+      if value != array2[i]
+        return false
       else
-        match = false
-      end
       i += 1
+      end
     end
   end
-  return match
+  
+  if i = array1.length && i = array2.length
+    return true
+  end
 end
 
 # --- END OF METHODS ---
