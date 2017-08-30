@@ -43,7 +43,6 @@ end
 # => b.If they are equal, return true
 def array_equals(array1, array2)
   if array1.length == array2.length
-
     index =0
     array1.each do |item|
       if (array1[index] == array2[index])
