@@ -2,8 +2,18 @@
 #    Fill the array randomly with 0’s and 1’s. Print out the array so that it
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
+
+
 def binary_to_decimal
-  puts "Not implemented"
+  #creates an array of 8 binary figures
+  binary = Array.new(8){[0,1].sample}
+  power = 0
+  decimal = 0
+  binary.reverse.each do |num|
+    decimal += num * (2 ** power)
+    power += 1
+  end
+  decimal
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -13,9 +23,28 @@ end
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
-def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+def array_equals(one, two)
+
+  if one.length != two.length
+    false
+  else
+      index = 0
+    one.length.times do |compare|
+      if one[index] == two[index]
+        true
+      else
+        false
+        exit
+      end
+      index += 1
+    end
+  end
+
+  #   if one[-1..0] == two[-1..0] && one.length == two.length
+  #     true
+  #   else
+  #     false
+  #   end
 end
 
 # --- END OF METHODS ---
