@@ -29,9 +29,35 @@ end
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
+
 def array_equals(array1, array2)
-  return array1 == array2
+  return false if array1.length != array2.length
+
+  array1.each_with_index do |int, i|
+    return false if int != array2[i]
+  end
+  # return array1 == array2
 end
+
+# #longer, more written out method not using .length
+# def array_equals(array1, array2)
+#   count1 = 0
+#   array1.each do
+#     count1 += 1
+#   end
+#
+#   count2 = 0
+#   array2.each do
+#     count2 += 1
+#   end
+#
+#   return false if count1 != count2
+#
+#   count1.times do |i|
+#     return false if array1[i] != array2[i]
+#   end
+#
+# end
 
 # --- END OF METHODS ---
 puts "Calling binary_to_decimal"
