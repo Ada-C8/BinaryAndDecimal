@@ -1,22 +1,63 @@
-# 1. Write a method named `binary_to_decimal` that creates an array of size 8.
-#    Fill the array randomly with 0’s and 1’s. Print out the array so that it
-#    appears as a binary number. Calculate the decimal value for this binary
-#    number using the algorithm you devised in class. Print out the decimal value.
+require 'pry'
+## 1.
+## Write a method named `binary_to_decimal` that creates an array of size 8.
+## Fill the array randomly with 0’s and 1’s.
+## Print out the array so that it appears as a binary number.
+## Calculate the decimal value for this binary number using the algorithm you devised in class.
+## Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  random_binary = []
+  8.times do
+    random_binary << rand(2)
+  end
+  binary = random_binary.join.to_i
+  puts binary
+
+  backwards = []
+  random_binary.reverse.each_with_index do |digit, i|
+    backwards << digit *= (2 ** i)
+  end
+  decimal = backwards.reduce(:+)
+  puts decimal
 end
 
-# 2. Write a method named `array_equals` that accepts two integer arrays as
-#    parameters. The method return `true` if the arrays contain the same elements
-#    in the same order, and returns `false` otherwise.
+
+# 2.
+# Write a method named `array_equals` that accepts two integer arrays as parameters.
+# The method return `true` if the arrays contain the same elements in the same order, and returns `false` otherwise.
 # Note: Do not use Array class methods for comparing the whole array at once.
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
+
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+  return false if array1.length != array2.length
+
+  array1.each_with_index do |int, i|
+    return false if int != array2[i]
+  end
+  # return array1 == array2
 end
+
+# #longer, more written out method not using .length
+# def array_equals(array1, array2)
+#   count1 = 0
+#   array1.each do
+#     count1 += 1
+#   end
+#
+#   count2 = 0
+#   array2.each do
+#     count2 += 1
+#   end
+#
+#   return false if count1 != count2
+#
+#   count1.times do |i|
+#     return false if array1[i] != array2[i]
+#   end
+#
+# end
 
 # --- END OF METHODS ---
 puts "Calling binary_to_decimal"
