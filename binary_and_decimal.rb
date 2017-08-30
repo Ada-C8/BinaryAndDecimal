@@ -2,16 +2,12 @@ def binary_to_decimal
   bin = Array.new(8){rand(0..1)}
 
   reverse_bin = bin.reverse
-  i = 0
-  add_nums = []
-  reverse_bin.each do |digit|
-    add_nums << digit * (2 ** i)
-    i += 1
+  totes = 0
+  reverse_bin.each_with_index do |digit, i|
+     totes += digit * (2 ** i)
   end
-  
-  decimal_num = add_nums.reduce(0){|sum, num| sum + num}
 
-  return "The binary ##{bin.join} equals the decimal ##{decimal_num}"
+  return "The binary ##{bin.join} equals the decimal ##{totes}"
 end
 
 def array_equals(array1, array2)
