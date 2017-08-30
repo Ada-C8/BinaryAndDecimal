@@ -3,7 +3,30 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  # puts "Not implemented"
+
+  # create array of 1s and 0s
+  binary_array = []
+  8.times do
+    binary_array << [0, 1].sample
+  end
+
+  decimal_val = 0
+
+  # reversing array, then calculating
+  rev_binary = binary_array.reverse
+  (0...rev_binary.length).each do |idx|
+    decimal_val += rev_binary[idx] * 2 ** idx
+  end
+
+  # without reversing the array
+  # power = bin_array.length - 1
+  # bin_array.each do |num|
+  #   decimal_val += num * 2 ** power
+  #   power -= 1
+  # end
+
+  puts "#{binary_array.join} = #{decimal_val.to_s}"
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -14,7 +37,17 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+  # puts "Not implemented"
+  
+  # iterate through indices of larger array
+  arr_len = array1.length > array2.length ? array1.length : array2.length
+
+  (0..arr_len).each do |idx|
+    if array1[idx] != array2[idx]
+      return false
+    end
+  end
+
   return true
 end
 
