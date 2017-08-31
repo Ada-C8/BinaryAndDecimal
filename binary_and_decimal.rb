@@ -25,8 +25,22 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+
+  if array1.length != array2.length #if array lengths are the same continue comparing
+    return false
+  end
+
+  array_length = array1.length
+
+  array_length.times do |i|
+    if array1[i] != array2[i]
+      return false
+    end
+  end
+
+  #The method return `true` if the arrays contain the same elements in the same order
   return true
+
 end
 
 # --- END OF METHODS ---
