@@ -3,51 +3,22 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 
-
-# def decimal_to_binary
-#   puts "What decimal number would you like to convert to binary?"
-#   number = gets.chomp.to_i
-#   result = number.to_s(2)
-#  puts "The decimal number #{number} = #{result} in binary."
-# end
-
-# def binary_to_decimal
-#   puts "What binary number would you like to convert to decimal?"
-#   number = gets.chomp
-#   result = 0
-
-#   numberofdigits = number.to_s.length
-#   digits = number.to_s.split("")
-
-#   for i in 0..digits.length
-#     a = digits.length - i
-#     if digits[a] == "1"
-#       if i == 0
-#         result = result + 1
-#       else
-#       result = result + 2**(i-1)
-#     end
-#   end
-# end
-
-# puts "The binary number #{number} = #{result}."
-# end
-
-# puts "1. Binary to Decimal"
-# puts "2. Decimal to Binary"
-# input = gets.chomp
-# if input.include? "1"
-#  binary_to_decimal
-# else
-#   decimal_to_binary
-# end
-
-
-
-
+def dec_to_binary(dec_number)
+  convert_this = Hash.new { |h, i| h[i] = i.to_s(2) }
+  puts convert_this[dec_number]
+end
 
 def binary_to_decimal
-  puts "Not implemented"
+  randombinarr = Array.new(8) {|num| num = rand(0..1) }
+  ones_and_zeros = randombinarr.reverse.join.to_i
+  puts "Binary number is : #{ones_and_zeros}"
+
+  dec_array = []
+  randombinarr.each_with_index do |digit, index|
+    dec_array << digit *= (2 ** index)
+  end
+  decimal = dec_array.sum
+  puts "Decimal: #{decimal}"
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -57,9 +28,16 @@ end
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
+
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+  array1 == array2 ? true : false
+end
+#comparing each element:
+
+def array_equals(array1, array2)
+  array1.each_with_index do |arr1element, arr2element|
+    return false if arr1element != array2[arr2element]
+  end
 end
 
 # --- END OF METHODS ---
