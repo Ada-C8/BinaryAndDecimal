@@ -3,7 +3,18 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary_num = Array.new(8)
+  binary_num.map! { |num| num = [0,1].sample }
+  puts "BINARY NUMBER: #{binary_num.join}"
+
+  #Convert from binary to decimal
+  #conversion table: [2^7, 2^6, 2^5, 2^4, 2^3, 2^2, 2^1, 2^0]
+  conversion_factors = [128, 64, 32, 16, 8, 4, 2, 1]
+
+  decimal_value = (binary_num.zip(conversion_factors).map{|digit, factors| digit * factors}).reduce(:+)
+
+  puts "DECIMAL VALUE: #{decimal_value}"
+
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -14,8 +25,22 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+
+  if array1.length != array2.length #if array lengths are the same continue comparing
+    return false
+  end
+
+  array_length = array1.length
+
+  array_length.times do |i|
+    if array1[i] != array2[i]
+      return false
+    end
+  end
+
+  #The method return `true` if the arrays contain the same elements in the same order
   return true
+
 end
 
 # --- END OF METHODS ---
