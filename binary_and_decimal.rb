@@ -15,8 +15,6 @@ def binary_to_decimal
 
   puts "DECIMAL VALUE: #{decimal_value}"
 
-
-
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
