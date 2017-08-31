@@ -24,15 +24,13 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  i = 0
   if array1.length != array2.length
     return false
   else
-    array1.each do |num|
+    array1.each_with_index do |num, i|
       if num != array2[i]
         return false
       end
-      i += 1
     end
     return true
   end
@@ -42,8 +40,8 @@ end
 #
 # # --- END OF METHODS ---
 puts "Calling binary_to_decimal"
-input = [1, 1, 0, 1, 0, 1]
-puts input.join("")
+input = Array.new(8).map {|n| rand(2)}
+puts input.join
 puts binary_to_decimal(input)
 
 puts "Calling array_equals"
