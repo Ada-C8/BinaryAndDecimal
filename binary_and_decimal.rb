@@ -1,10 +1,28 @@
-# 1. Write a method named `binary_to_decimal` that creates an array of size 8.
-#    Fill the array randomly with 0’s and 1’s. Print out the array so that it
-#    appears as a binary number. Calculate the decimal value for this binary
-#    number using the algorithm you devised in class. Print out the decimal value.
+# # 1. Write a method named `binary_to_decimal` that creates an array of size 8.
+# #    Fill the array randomly with 0’s and 1’s. Print out the array so that it
+# #    appears as a binary number. Calculate the decimal value for this binary
+# #    number using the algorithm you devised in class. Print out the decimal value.
+
 def binary_to_decimal
-  puts "Not implemented"
+  binary_num = Array.new(8) { rand(0..1)}
+    result = 0
+    # numberofdigits = binary_num.to_s.length
+    digits = binary_num.to_s.split("")
+
+    (0..digits.length).each do |i|
+      a = digits.length - i
+      if digits[a] == "1"
+        if i == 0
+          result = result + 1
+        else
+          result = result + 2**(i-1)
+        end
+      end
+    end
+
+    puts "The binary number #{binary_num} = #{result}."
 end
+
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
 #    parameters. The method return `true` if the arrays contain the same elements
@@ -13,9 +31,24 @@ end
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
+
+#2a Check the length of array 1 and array 2 to determine if the length are equal not
+# If the lengths are not equal, select the length of the shortest array
+# Check the number of the array at the same index and compare the values
+# If the value at each index is the same return true, if not return false
+# Store the boolean value in result array
+
+
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+  result = []
+  [array1.length, array2.length].min.times do |i|
+    if array1[i] == array2[i]
+        result << "true"
+    else
+      result << "false"
+    end
+  end
+  return result
 end
 
 # --- END OF METHODS ---
