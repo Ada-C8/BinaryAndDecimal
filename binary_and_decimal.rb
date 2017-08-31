@@ -3,7 +3,20 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary_num = Array.new(8)
+  binary_num.map! { |num| num = [0,1].sample }
+  puts "BINARY NUMBER: #{binary_num.join}"
+
+  #Convert from binary to decimal
+  #invert conversion_table = [2^7, 2^6, 2^5, 2^4, 2^3, 2^2, 2^1, 2^0]
+  conversion_factors = [128, 64, 32, 16, 8, 4, 2, 1]
+
+  decimal_value = (binary_num.zip(conversion_factors).map{|digit, factors| digit * factors}).reduce(:+)
+
+  puts "DECIMAL VALUE: #{decimal_value}"
+
+
+
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
