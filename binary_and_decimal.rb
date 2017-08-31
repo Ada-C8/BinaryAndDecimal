@@ -8,7 +8,7 @@ def binary_to_decimal
   puts "BINARY NUMBER: #{binary_num.join}"
 
   #Convert from binary to decimal
-  #invert conversion_table = [2^7, 2^6, 2^5, 2^4, 2^3, 2^2, 2^1, 2^0]
+  #conversion table: [2^7, 2^6, 2^5, 2^4, 2^3, 2^2, 2^1, 2^0]
   conversion_factors = [128, 64, 32, 16, 8, 4, 2, 1]
 
   decimal_value = (binary_num.zip(conversion_factors).map{|digit, factors| digit * factors}).reduce(:+)
