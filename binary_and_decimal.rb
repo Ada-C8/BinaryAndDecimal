@@ -3,7 +3,21 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  byte = []
+
+  8.times do
+    byte << [0,1].sample
+  end
+
+  decimal = 0
+  reversed = byte.reverse
+  reversed.each_index do |idx|
+    decimal += reversed[idx] * (2**idx)
+  end
+
+  puts "Binary number: #{byte.join} \nDecimal value: #{decimal}"
+  return decimal
+
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -14,7 +28,14 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+
+  return false if array1.count != array2.count
+
+  array1.each_index do |idx|
+    return false if array1[idx] != array2[idx]
+  end
+  # array1.map.with_index { |arr1_value,idx| return false if array2[idx] != arr1_value}
+
   return true
 end
 
