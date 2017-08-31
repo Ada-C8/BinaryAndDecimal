@@ -2,9 +2,19 @@
 #    Fill the array randomly with 0’s and 1’s. Print out the array so that it
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
-def binary_to_decimal
-  puts "Not implemented"
+def binary_to_decimal(arr)
+  exponent = 0
+  result = 0
+  arr.reverse.each do |s|
+    result += s * (2 ** exponent)
+    exponent += 1
+  end
+  return result
+  puts result
 end
+# #
+# puts binary_to_decimal([1,0,1])
+
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
 #    parameters. The method return `true` if the arrays contain the same elements
@@ -14,13 +24,27 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+  i = 0
+  if array1.length != array2.length
+    return false
+  else
+    array1.each do |num|
+      if num != array2[i]
+        return false
+      end
+      i += 1
+    end
+    return true
+  end
 end
 
-# --- END OF METHODS ---
+# puts array_equals([2,3,4,5],[2,3,4,5])
+#
+# # --- END OF METHODS ---
 puts "Calling binary_to_decimal"
-binary_to_decimal
+input = [1, 1, 0, 1, 0, 1]
+puts input.join("")
+puts binary_to_decimal(input)
 
 puts "Calling array_equals"
 array1 = [10, 20, 30, 40, 50, 60]
@@ -31,6 +55,7 @@ if !array_equals(array1, array2) # both equal case
   print array2
 end
 
+# #
 array3 = [10, 20, 30, 40, 50, 60, 70] # not equal: first 6 elements same
 if array_equals(array1, array3)
   puts "BUG: array_equals should return false."
@@ -64,4 +89,11 @@ if array_equals(array5, array7) # not equal: one empty, one not case
   puts "BUG: array_equals should return false."
   print array5
   print array7
+end
+
+array8 = [10, 70, 30, 40, 50, 60]
+if array_equals(array1, array8) # both equal case
+  puts "BUG: array_equals should return true."
+  print array1
+  print array8
 end
