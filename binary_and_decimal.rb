@@ -3,8 +3,28 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary_array = []
+  8.times do
+    binary_array << rand(0..1)
+  end
+  puts "Number in Binary: #{binary_array.join}"
+#Commented out code represents more efficient solution
+  i = -1
+  counter = 0
+  decimal_array = []
+  #total = 0
+  #i = 0
+  8.times do
+  decimal_array << (binary_array[i] * (2**counter))
+  #total = total * 2 + binary_array[i]
+  i = i + -1
+  #i += 1
+  counter += 1
+  end
+  puts "Number in Decimal: #{decimal_array.reduce(:+)}"
+  #puts total
 end
+# puts binary_to_decimal
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
 #    parameters. The method return `true` if the arrays contain the same elements
@@ -14,7 +34,18 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+  i = 0
+  if array1.length != array2.length
+    return false
+  elsif
+    until i == array1.length
+      if array1[i] != array2[i]
+        return false
+      end
+        i += 1
+    end
+  end
+  puts "Arrays match!"
   return true
 end
 
