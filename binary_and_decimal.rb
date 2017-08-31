@@ -3,22 +3,44 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary_array = []
+  8.times do 
+	binary_array << rand(0..1)
+  end
+  
+  sum = 0
+  power_index = 0
+  
+  binary_array.reverse.each do |i|
+	if i == 1
+		sum += 2**power_index
+	end
+	power_index += 1
+  end
+	
+	front = binary_array[0..3].join
+	back = binary_array[4..7].join
+	
+	puts "Binary: #{front} #{back}"
+	puts "Decimal: #{sum}"
 end
 
-# 2. Write a method named `array_equals` that accepts two integer arrays as
-#    parameters. The method return `true` if the arrays contain the same elements
-#    in the same order, and returns `false` otherwise.
-# Note: Do not use Array class methods for comparing the whole array at once.
-#       You may use array indexing to retrieve one element at a time,
-#       compare individual elements with each other and
-#       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+	if array1.length != array2.length 
+		return false
+	else
+		index = 0
+		array1.each do |i|
+			if array1[index] != array2[index]
+				return false
+			else
+				index += 1
+			end
+		end
+	end
+	return true
 end
 
-# --- END OF METHODS ---
 puts "Calling binary_to_decimal"
 binary_to_decimal
 
