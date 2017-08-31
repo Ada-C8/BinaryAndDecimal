@@ -1,21 +1,35 @@
-# 1. Write a method named `binary_to_decimal` that creates an array of size 8.
-#    Fill the array randomly with 0’s and 1’s. Print out the array so that it
-#    appears as a binary number. Calculate the decimal value for this binary
-#    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary = []
+  8.times do 
+    binary << rand(0..1) 
+  end
+  puts "Your randomly generated binary number is: #{binary}"
+
+  new_binary = binary.reverse
+
+  decimal = 0
+  n = 0 
+  new_binary.each do |i|
+    decimal += i * 2 ** n
+    n += 1
+  end
+  puts "Your binary number is now converted to decimal number: #{decimal}!"
 end
 
-# 2. Write a method named `array_equals` that accepts two integer arrays as
-#    parameters. The method return `true` if the arrays contain the same elements
-#    in the same order, and returns `false` otherwise.
-# Note: Do not use Array class methods for comparing the whole array at once.
-#       You may use array indexing to retrieve one element at a time,
-#       compare individual elements with each other and
-#       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
-  return true
+  if array1.length == array2.length 
+    y = 0
+    array1.each_with_index do |x, index|
+      if x == array2[index]
+        y += 1
+      end
+    end
+    if y == array1.length
+      return true
+    end
+    return false
+  end
+  return false
 end
 
 # --- END OF METHODS ---
