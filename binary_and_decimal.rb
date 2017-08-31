@@ -1,9 +1,20 @@
+require 'pry'
+
 # 1. Write a method named `binary_to_decimal` that creates an array of size 8.
 #    Fill the array randomly with 0’s and 1’s. Print out the array so that it
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  binary = [1, 1, 0, 1, 0, 0, 0, 1]
+  puts binary
+  puts
+  decimal = 0
+  binary.reverse.each_with_index do |num, i|
+    num = num * 2**i
+    decimal += num
+  end
+  puts decimal
+  puts
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -14,7 +25,15 @@ end
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+  if array1.length != array2.length
+    return false
+  end
+
+  array1.each_with_index do |num, i|
+    if array1[i] != array2[i]
+      return false
+    end
+  end
   return true
 end
 
