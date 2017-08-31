@@ -3,18 +3,28 @@
 #    appears as a binary number. Calculate the decimal value for this binary
 #    number using the algorithm you devised in class. Print out the decimal value.
 def binary_to_decimal
-  puts "Not implemented"
+  bit_array = []
+  8.times {bit_array << [0,1].sample}
+  puts "Let's convert this bit: #{bit_array.join}!"
+  puts "...\n...\nconverting...\n...\n..."
+  decimal = 0
+  bit_array.reverse.length.times do |index|
+    decimal += bit_array[index] * 2**index
+  end
+  puts "Here is #{bit_array.join}'s decimal value: #{decimal}"
 end
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
 #    parameters. The method return `true` if the arrays contain the same elements
 #    in the same order, and returns `false` otherwise.
-# Note: Do not use Array class methods for comparing the whole array at once.
+# Note: Do not use Array class mthods for comparing the whole array at once.
 #       You may use array indexing to retrieve one element at a time,
 #       compare individual elements with each other and
 #       you may retrieve the length of an array.
 def array_equals(array1, array2)
-  puts "Not implemented"
+  [array1.length, array2.length].max.times do |index|
+    return false if array1[index] != array2[index]
+  end
   return true
 end
 
