@@ -2,26 +2,19 @@
 # #    Fill the array randomly with 0’s and 1’s. Print out the array so that it
 # #    appears as a binary number. Calculate the decimal value for this binary
 # #    number using the algorithm you devised in class. Print out the decimal value.
-
+#
 def binary_to_decimal
-  binary_num = Array.new(8) { rand(0..1)}
-    result = 0
-    # numberofdigits = binary_num.to_s.length
-    digits = binary_num.to_s.split("")
-
-    (0..digits.length).each do |i|
-      a = digits.length - i
-      if digits[a] == "1"
-        if i == 0
-          result = result + 1
-        else
-          result = result + 2**(i-1)
-        end
-      end
+  binary_num = Array.new(8) {rand(0..1)}
+  # print binary_num
+  decimal_total = 0
+  binary_num.each_with_index do |num, i|
+    if num == 1
+      decimal_total += 2**i
     end
-
-    puts "The binary number #{binary_num} = #{result}."
+  end
+  return decimal_total
 end
+
 
 
 # 2. Write a method named `array_equals` that accepts two integer arrays as
@@ -40,20 +33,16 @@ end
 
 
 def array_equals(array1, array2)
-  result = []
   [array1.length, array2.length].min.times do |i|
-    if array1[i] == array2[i]
-        result << "true"
-    else
-      result << "false"
+    if array1[i] != array2[i]
+    return false
     end
   end
-  return result
 end
 
 # --- END OF METHODS ---
-puts "Calling binary_to_decimal"
-binary_to_decimal
+# puts "Calling binary_to_decimal"
+# binary_to_decimal
 
 puts "Calling array_equals"
 array1 = [10, 20, 30, 40, 50, 60]
