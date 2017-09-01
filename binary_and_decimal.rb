@@ -12,6 +12,7 @@ def binary_to_decimal
       decimal_total += 2**i
     end
   end
+  #  puts "The binary number #{binary_num} = #{decimal_total}."
   return decimal_total
 end
 
